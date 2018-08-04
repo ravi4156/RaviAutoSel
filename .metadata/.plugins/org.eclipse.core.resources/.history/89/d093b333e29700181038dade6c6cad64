@@ -1,0 +1,40 @@
+package generic;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+
+public class Excels {
+
+	public static void main(String[] args){
+		String path="./data/input.xlsx";
+		String Sheet="Valid login";
+		Workbook wb = null;
+		try {
+			wb = WorkbookFactory.create(new FileInputStream(path));
+		} catch (EncryptedDocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String v=wb.getSheet(Sheet).getRow(1).getCell(0).getStringCellValue();
+		System.out.println(v);
+		}
+		
+
+	}
+
+
